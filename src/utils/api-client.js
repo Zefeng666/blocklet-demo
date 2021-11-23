@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 定义相关的 endpoint
 const endPoints = {
-  test: 'https://blockchain.info/',
+  test: '',
   prod: '',
 };
 

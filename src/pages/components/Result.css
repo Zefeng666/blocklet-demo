@@ -1,0 +1,12 @@
+.result {
+  font-size: 14px;
+}
+
+.info-list-item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.info-list-item-title {
+  width: 100px;
+}

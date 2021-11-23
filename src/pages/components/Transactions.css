@@ -1,0 +1,29 @@
+.transactions {
+  font-size: 14px;
+}
+.list-fee {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.list-col-one {
+  width: 20%;
+}
+.list-col-two {
+  width: 40%;
+}
+.list-col-three {
+  width: 40%;
+  text-align: right;
+}
+
+.list-out-item {
+  display: flex;
+  justify-content: space-between;
+}
+.list-out-item-addr {
+  width: 50%;
+}
+.list-out-item-val {
+  width: 50%;
+}

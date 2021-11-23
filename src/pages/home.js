@@ -1,43 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-
-import apiClient from '../utils/api-client';
+import TextField from '@material-ui/core/TextField';
+import { setUrl, getQueryVariable } from '../utils';
+import { useSearch } from './hooks/useSearch';
+import Result from './components/Result';
 
 import './home.css';
 
 const Home = () => {
-  console.log(apiClient, 'apiClient');
   const [searchValue, setSearchValue] = useState('');
-  useEffect(() => {
-    apiClient
-      .get('/rawblock/00000000000000000007878ec04bb2b2e12317804810f4c26033585b3f81ffaa')
-      .then((res) => {
-        // 请求成功时设置返回数据到状态
-        // setLoading(false);
-        // setData(res.data);
-        console.log(res);
-      })
-      .catch((err) => {
-        // 请求失败时设置错误状态
-        // setLoading(false);
-        // setError(err);
-        console.log(err);
-      });
-  }, []);
+  const { data: searchResult, loading, error, setSearchParam } = useSearch();
+
   const handleChange = (e) => {
     setSearchValue(e.target.value);
   };
   const handleSearch = () => {
-    console.log(searchValue, 'searchValue');
+    setSearchParam(searchValue);
+    setUrl(searchValue);
   };
+  useEffect(() => {
+    const _searchValue = getQueryVariable('searchKey');
+    setSearchValue(_searchValue);
+    setSearchParam(_searchValue);
+  }, []);
   return (
-    <header className="app-header">
-      <Input value={searchValue} label="Search field" type="search" variant="outlined" onChange={handleChange} />
-      <Button variant="contained" onClick={handleSearch}>
-        搜索
-      </Button>
-    </header>
+    <div>
+      <div className="search-box">
+        <TextField
+          fullWidth
+          size="small"
+          value={searchValue}
+          type="search"
+          variant="outlined"
+          onChange={handleChange}
+        />
+      </div>
+      <div className="search-button">
+        <Button variant="contained" onClick={handleSearch} size="large">
+          搜索
+        </Button>
+      </div>
+
+      {searchResult ? (
+        <Result searchResult={searchResult} loading={loading} />
+      ) : error ? (
+        <div>暂无数据</div>
+      ) : (
+        <div>加载中...</div>
+      )}
+    </div>
   );
 };
 

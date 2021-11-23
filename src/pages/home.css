@@ -1,4 +1,8 @@
-.hello {
-  font-size: 14px;
-  color: #000;
+.search-box {
+  width: calc(100% - 75px);
+  display: inline-block;
+  vertical-align: bottom;
+}
+.search-button {
+  display: inline-block;
 }
