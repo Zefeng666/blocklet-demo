@@ -17,7 +17,7 @@ export const getQueryVariable = (variable) => {
       return pair[1];
     }
   }
-  return false;
+  return '';
 };
 
 export const handleTime = (time) => {

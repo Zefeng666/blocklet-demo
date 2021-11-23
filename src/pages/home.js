@@ -20,8 +20,10 @@ const Home = () => {
   };
   useEffect(() => {
     const _searchValue = getQueryVariable('searchKey');
-    setSearchValue(_searchValue);
-    setSearchParam(_searchValue);
+    if (_searchValue != '') {
+      setSearchValue(_searchValue);
+      setSearchParam(_searchValue);
+    }
   }, []);
   return (
     <div>
@@ -33,6 +35,11 @@ const Home = () => {
           type="search"
           variant="outlined"
           onChange={handleChange}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) {
+              handleSearch();
+            }
+          }}
         />
       </div>
       <div className="search-button">
@@ -43,7 +50,7 @@ const Home = () => {
 
       {searchResult ? (
         <Result searchResult={searchResult} loading={loading} />
-      ) : error ? (
+      ) : error || !loading ? (
         <div>暂无数据</div>
       ) : (
         <div>加载中...</div>
