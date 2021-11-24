@@ -1,5 +1,9 @@
 # Getting Started with Create Blocklet
 
+code test
+
+请在 dev 环境查看，发布之后跨域暂未处理
+
 This project was bootstrapped with [Create Blocklet](https://github.com/blocklet/create-blocklet).
 
 This blocklet is a static project, which means this is a frontend application. It's contained `client` code.
