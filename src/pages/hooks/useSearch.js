@@ -13,7 +13,7 @@ export const useSearch = () => {
     setData(null);
     setError(null);
     apiClient
-      .get(`/api/rawblock/${searchValue}`)
+      .get(`/rawblock/${searchValue}`)
       .then((res) => {
         // 请求成功时设置返回数据到状态
         setLoading(false);
